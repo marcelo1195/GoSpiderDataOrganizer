@@ -15,6 +15,7 @@ def main():
     parser.add_argument("-H", "--href", action="store_true", help="Select only href URLs")
     parser.add_argument("-S", "--subdomains", action="store_true", help="Select only subdomains")
     parser.add_argument("-F", "--forms", action="store_true", help="Select only form URLs")
+    parser.add_argument("-L", "--linkfinder", action="store_true", help="Select only linkfinder URLs")
     parser.add_argument("-U", "--others", action="store_true", help="Select other uncategorized URLs")
     parser.add_argument("-A", "--all", action="store_true", help="Select all types of URLs")
     parser.add_argument("-t", "--threads", type=int, default=1, help="Number of threads for parallel processing")

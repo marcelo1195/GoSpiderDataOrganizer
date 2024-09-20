@@ -46,6 +46,7 @@ python main.py -I <input_file> -O <output_directory> [options]
 - `-H` or `--href`: Selects only href URLs
 - `-S` or `--subdomains`: Selects only subdomains
 - `-F` or `--forms`: Selects only form URLs
+- `-L` or `--linkfinder`: Selects only linkfinder URLs
 - `-U` or `--others`: Selects other uncategorized URLs
 - `-A` or `--all`: Selects all URL types
 - `-t` or `--threads`: Number of threads for parallel processing (default: 1)
@@ -75,6 +76,7 @@ The program will create a text file for each selected category in the specified 
 - `href.txt`
 - `javascript.txt`
 - `form.txt`
+- `linkfinder.txt`
 - `url.txt` (for uncategorized URLs)
 - `others.txt`
 

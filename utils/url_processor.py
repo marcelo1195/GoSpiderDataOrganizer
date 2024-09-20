@@ -19,6 +19,7 @@ def categorize_urls_subset(lines, exclude_400=False):
         'javascript': [],
         'form': [],
         'url': [],
+        'linkfinder': [],
         'others': []
     }
 
@@ -41,6 +42,9 @@ def categorize_urls_subset(lines, exclude_400=False):
         elif line.startswith('[form]'):
             url = line.split(' - ', 1)[1]
             categories['form'].append(url)
+        elif line.startswith('[linkfinder]'):  # Nova condição
+            url = line.split(' - ', 1)[1]
+            categories['linkfinder'].append(url)
         elif line.startswith('[url]'):
             match = url_pattern.search(line)
             if match:
@@ -68,13 +72,13 @@ def categorize_urls_threaded(lines, exclude_400=False, num_threads=10):
         for future in as_completed(future_to_chunk):
             results.append(future.result())
 
-    # Combinar resultados
     combined_categories = {
         'subdomains': [],
         'href': [],
         'javascript': [],
         'form': [],
         'url': [],
+        'linkfinder': [],
         'others': []
     }
 
@@ -105,6 +109,8 @@ def save_categorized_urls(categories, output_dir, args):
             selected_categories.append('javascript')
         if args.forms:
             selected_categories.append('form')
+        if args.linkfinder:
+            selected_categories.append('linkfinder')
         if args.others:
             selected_categories.append('others')
         if not selected_categories:
