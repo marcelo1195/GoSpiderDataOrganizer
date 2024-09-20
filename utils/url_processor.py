@@ -20,6 +20,7 @@ def categorize_urls_subset(lines, exclude_400=False):
         'form': [],
         'url': [],
         'linkfinder': [],
+        'robots': [],
         'others': []
     }
 
@@ -42,9 +43,12 @@ def categorize_urls_subset(lines, exclude_400=False):
         elif line.startswith('[form]'):
             url = line.split(' - ', 1)[1]
             categories['form'].append(url)
-        elif line.startswith('[linkfinder]'):  # Nova condição
+        elif line.startswith('[linkfinder]'):
             url = line.split(' - ', 1)[1]
             categories['linkfinder'].append(url)
+        elif line.startswith('[robots]'):
+            url = line.split(' - ', 1)[1]
+            categories['robots'].append(url)
         elif line.startswith('[url]'):
             match = url_pattern.search(line)
             if match:
@@ -79,6 +83,7 @@ def categorize_urls_threaded(lines, exclude_400=False, num_threads=10):
         'form': [],
         'url': [],
         'linkfinder': [],
+        'robots': [],
         'others': []
     }
 
@@ -113,6 +118,8 @@ def save_categorized_urls(categories, output_dir, args):
             selected_categories.append('linkfinder')
         if args.others:
             selected_categories.append('others')
+        if args.others:
+            selected_categories.append('robots')
         if not selected_categories:
             selected_categories.append('url')
 

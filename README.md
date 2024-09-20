@@ -47,9 +47,10 @@ python main.py -I <input_file> -O <output_directory> [options]
 - `-S` or `--subdomains`: Selects only subdomains
 - `-F` or `--forms`: Selects only form URLs
 - `-L` or `--linkfinder`: Selects only linkfinder URLs
+- `-R` or `--robots`: Selects only robots.txt URLs
 - `-U` or `--others`: Selects other uncategorized URLs
 - `-A` or `--all`: Selects all URL types
-- `-t` or `--threads`: Number of threads for parallel processing (default: 1)
+- `-t` or `--threads`: Number of threads for parallel processing (default: 10)
 
 ## Usage Examples
 
@@ -77,6 +78,7 @@ The program will create a text file for each selected category in the specified 
 - `javascript.txt`
 - `form.txt`
 - `linkfinder.txt`
+- `robots.txt`
 - `url.txt` (for uncategorized URLs)
 - `others.txt`
 
